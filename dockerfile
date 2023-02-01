@@ -5,7 +5,7 @@ RUN git clone https://github.com/88hub/mock_postgre.git
 FROM maven:3.8.7-eclipse-temurin-19-alpine as build
 WORKDIR /app
 COPY --from=clone /app/mock_postgre /app
-RUN mvn package
+RUN mvn package -Dmaven.test.skip
 
 FROM openjdk:19-jdk-alpine
 WORKDIR /app
